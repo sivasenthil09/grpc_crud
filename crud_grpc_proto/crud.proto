@@ -1,0 +1,36 @@
+syntax = "proto3";
+package crud_grpc;
+option go_package= "https://github.com/sivasenthil09/grpc_crud";
+
+service crud{
+   rpc CreateUser( UserDetails)returns(Response);
+   rpc Listuser(Empty)returns(ListUserResponse);
+   rpc GetUserByName(Name)returns(UserDetails);
+   //rpc UpdateUser(Name)returns(Response);
+   rpc DeleteUser(Name)returns(Response);
+
+}
+
+message UserDetails{
+    string Name = 1;
+    string PhoneNo= 2;
+    string Address = 3;
+    string EmailId= 4;
+
+}
+
+message Response {
+    string Message = 1;
+}
+
+message Empty{
+
+}
+
+message ListUserResponse{
+    repeated UserDetails ListUser = 1;
+
+}
+message Name{
+    string UserName= 1;
+}
